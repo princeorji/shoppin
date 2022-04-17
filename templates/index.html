@@ -6,14 +6,16 @@
         <!-- Content -->
         <div class="shop-content">
             <!-- Box -->
+            {% for product in products %}
             <div class="product-box">
-                <img src="" class="product-image" alt="">
-                <h2 class="product-title"></h2>
-                <span class="price">$</span>
+                <img src="{{product.image.url}}" class="product-image" alt="">
+                <h2 class="product-title">{{product.name}}</h2>
+                <span class="price">${{product.price}}</span>
                 <a href="">
                     <i title="add to cart" class='bx bx-shopping-bag add-cart'></i>
                 </a>
             </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}
