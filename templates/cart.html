@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Cart {% endblock title %}
+{% block head_css_page %}<link rel="stylesheet" href="{% static 'css/cart.css' %}">{% endblock head_css_page %}
+{% block content %}
+    <section class="table">
+        {% if orders %}
+            <table class="cart">
+                <thead>
+                    <tr>
+                        <td>Product</td> 
+                        <td>Qty</td>
+                        <td>Total</td>
+                    </tr>
+                </thead>
+                {% for order in orders %}
+                    <tbody>
+                        <tr>
+                            <td class="product">
+                                <img src="{{order.product.image.url}}" alt="">
+                                <div>
+                                    <p>{{order.product.name}}</p>
+                                    <small>Price: ${{order.product.price}}</small>
+                                </div>
+                            </td> 
+                            <td class="qty">
+                                <a href="{% url 'add' order.product.pk %}">+</a>
+                                <small>{{order.quantity}}</small>
+                                <a href="{% url 'subtract' order.product.pk %}">-</a> 
+                            </td>
+                            <td class="total">${{order.total_price}}</td>
+                        </tr>
+                    </tbody>
+                {% endfor %}
+                <tfoot>
+                    <tr>
+                        <td colspan="2" align="right">Cart Total</td>
+                        <td>$</td>
+                    </tr>
+                </tfoot>
+            </table>
+        {% else %}
+            <div class="empty-cart">
+                <img src="{% static 'svg/empty_cart.svg' %}" alt="">
+                <h2>Your cart is empty!</h2>
+                <p>Browse our categories and discover our best deals!</p>
+                <a href="{% url 'store' %}"><button>Start Shoppin</button></a>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}
