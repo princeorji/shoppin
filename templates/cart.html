@@ -25,9 +25,9 @@
                                 </div>
                             </td> 
                             <td class="qty">
-                                <a href="{% url 'add' order.product.pk %}">+</a>
+                                <a href="{% url 'marketing:add' order.product.pk %}">+</a>
                                 <small>{{order.quantity}}</small>
-                                <a href="{% url 'subtract' order.product.pk %}">-</a> 
+                                <a href="{% url 'marketing:subtract' order.product.pk %}">-</a> 
                             </td>
                             <td class="total">${{order.total_price}}</td>
                         </tr>
@@ -45,7 +45,7 @@
                 <img src="{% static 'svg/empty_cart.svg' %}" alt="">
                 <h2>Your cart is empty!</h2>
                 <p>Browse our categories and discover our best deals!</p>
-                <a href="{% url 'store' %}"><button>Start Shoppin</button></a>
+                <a href="{% url 'marketing:store' %}"><button>Start Shoppin</button></a>
             </div>
         {% endif %}
     </section>

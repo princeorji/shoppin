@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login {% endblock title %}
+{% block content %}  
+    <style>
+        div {
+            padding-left: 2rem;
+        }
+        label, input {
+            display: block;
+        }
+    </style>
+
+    <section>
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+                <label for="">Username:</label>
+                <input type="text" name="username">
+    
+                <label for="">Password:</label>
+                <input type="password" name="password">
+    
+                <button type="submit" value="login">Sign In</button>
+
+            </form>
+            <p>haven't signed up yet?</p>
+            <a href="{% url 'users:register' %}">Sign Up</a>
+        </div>
+    </section>
+{% endblock %}
+
