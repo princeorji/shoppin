@@ -23,6 +23,7 @@ def sign_out(request):
     return redirect('marketing:store')
 
 def sign_up(request):
+    form = UserCreationForm()
 
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -33,6 +34,5 @@ def sign_up(request):
             return redirect('marketing:store')
     else:
         messages.error(request, 'an error occured during registration!')
-        form = UserCreationForm()
 
     return render(request, 'users/register.html', {'form': form})
